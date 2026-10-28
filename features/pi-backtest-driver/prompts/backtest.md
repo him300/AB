@@ -101,7 +101,13 @@ res = @backtest(dts, closes, begin
     r[i-1] > 70 && flat!()
 end; deposit = 10_000.0)
 
-backtest_stats(res)
+backtest_stats(res)        # stats: final equity, max drawdown, sharpe, win rate ...
+
+# Plots (Plots.jl / your plotting lib of choice)
+#   equity curve, drawdown, and trade entry/exit markers
+plot(res.eq_t, res.eq_v)                                    # equity curve
+plot(res.dd_t, res.dd_v)                                    # drawdown (dd_t/dd_v aligned 1:1 with eq)
+plot_trades(res, dts, closes)                               # price + entries/wins/losses markers
 ```
 
 Adapt names, indicators, conditions, and kwargs to the strategy.
@@ -137,7 +143,8 @@ Explain step-by-step what the code does, in order:
 3. Build `@backtest(dts, closes, ...)` call;
 4. Define signal block conditions (`long!()`, `flat!()`, etc.);
 5. Run account loop, collect equity/drawdown vectors;
-6. Return `BacktestResult` and print `backtest_stats(res)`.
+6. Return `BacktestResult` and print `backtest_stats(res)`;
+7. Plot equity curve (`plot(res.eq_t, res.eq_v)`), drawdown (`plot(res.dd_t, res.dd_v)`), and trade entry/exit markers (`plot_trades(res, dts, closes)`).
 
 ### Confirmation
 
@@ -155,7 +162,7 @@ If confirmed, write the generated Julia script to a sensible path, such as `Back
 julia --project="Backtest/vendor/Fastback.jl" /absolute/path/to/generated_strategy.jl
 ```
 
-Then report results using `backtest_stats(res)`, `show_account(res)`, and related helpers.
+Then report results using `backtest_stats(res)`, `show_account(res)`, and related helpers, and return the three plots (equity, drawdown, trade entry/exit).
 
 ## Hard stops
 
