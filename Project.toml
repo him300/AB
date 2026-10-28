@@ -1,0 +1,10 @@
+name = "AdvancedBacktester"
+uuid = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+version = "0.1.0"
+authors = ["Pi Agent build"]
+description = "Advanced Julia backtesting module — macro-based backtest pipeline with Fastback engine, statistics, plots, and trading utilities."
+julia = "1.10"
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+Fastback = "vendor/Fastback"  # vendored engine
