@@ -1,4 +1,4 @@
-### AdvancedBacktester
+### 1-Back
 
 Advanced Julia backtesting pipeline. Macro-based (`@backtest`), vendored Fastback engine.
 
