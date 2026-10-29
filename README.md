@@ -1,6 +1,4 @@
-###  AB (AdvancedBacktester)
-
-Advanced Julia backtesting pipeline. Macro-based (`@backtest`), vendored Fastback engine.
+# AdvancedBacktester
 
 ## The One-Macro Backtesting Engine for Julia
 
@@ -47,5 +45,17 @@ plot(res.eq_t, res.eq_v)      # Your plotting lib of choice
 - Reduces false positives through rigorous vector processing
 - Integrates with existing Julia packages (Fastback, Indicators, Plots)
 - Maintains full transparency through detailed result objects
+
+### Pi Agent Backtest Driver
+
+A Pi prompt template that drives `AdvancedBacktester` from plain English:
+
+```text
+/backtest Buy when Shannon entropy < past deviation.
+```
+
+It captures the strategy, requires data, generates Julia code, asks for confirmation, then runs and returns `backtest_stats(res)`.
+
+See [features/pi-backtest-driver/](features/pi-backtest-driver/) for install and usage.
 
 For full documentation, see the [Advanced_Backtester_MANUAL.md](docs/ADVANCED_BACKTESTER_MANUAL.md) or the [BACKTEST_SYTHESIS.md](specs/BACKTEST_SYTHESIS.md) design document.
